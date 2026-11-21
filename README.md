@@ -48,4 +48,4 @@ Os avisos no celular (Edge Function `supabase/functions/notify`) precisam també
 | `src/lib/types.ts` | Tipos de todas as tabelas |
 | `src/lib/seed.ts` | Dados de exemplo fictícios do modo local |
 | `supabase/` | Esquema do banco, políticas de segurança, gatilhos e Edge Function |
-| `docs/` | Documentação do trabalho e diagramas (Mermaid) |
+| `docs/` | Documentação do trabalho e diagramas (projeto do Astah UML em `docs/astah`) |
