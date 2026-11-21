@@ -6,8 +6,8 @@ Sistema web interno da Lumora, empresa de quatro sócios que atua com desenvolvi
 
 | | |
 |---|---|
-| Autor | [NOME COMPLETO] – RA [000000] |
-| Curso | [CURSO] |
+| Autor | Leonardo Gabriel Capucho de Moura |
+| Curso | Engenharia de Software |
 | Documentação | [`docs/Documentacao-Lumora-HUB.pdf`](docs/Documentacao-Lumora-HUB.pdf) (requisitos, casos de uso, DER, classes, atividade e sequência) |
 
 > Este repositório é uma cópia do sistema preparada para a avaliação. O código é o mesmo que a equipe usa em produção, mas **todos os dados de exemplo são fictícios** e o histórico de commits começa do zero. O repositório de produção da empresa é privado.
