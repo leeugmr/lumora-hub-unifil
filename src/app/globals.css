@@ -1,0 +1,236 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Lumora HUB: tokens do design system "Lumora" (claude.ai, sincronizado em 2026-11-15).
+   Partes de papel mudam no modo escuro; seções ink são fixas. */
+
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+@theme inline {
+  --font-sans: var(--font-hanken), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: var(--font-hanken), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Papel (tema claro/escuro) */
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-raised: var(--surface-raised);
+  --color-fg: var(--text);
+  --color-fg-muted: var(--text-muted);
+  --color-fg-subtle: var(--text-subtle);
+  --color-accent-text: var(--accent-text);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-action: var(--action);
+  --color-on-action: var(--on-action);
+  --color-focus: var(--focus);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+
+  /* Fixas */
+  --color-ink: #070e18;
+  --color-ink-raised: #0f1d2e;
+  --color-navy: #142b45;
+  --color-lime: #b0f500;
+  --color-lime-glow: #c6ff3a;
+  --color-lime-deep: #8fc400;
+  --color-on-ink: #f2f6fa;
+  --color-fog: #a9b8c9;
+  --color-fog-dim: #6f8399;
+
+  /* shadcn */
+  --color-background: var(--surface);
+  --color-foreground: var(--text);
+  --color-card: var(--surface-raised);
+  --color-card-foreground: var(--text);
+  --color-popover: var(--surface-raised);
+  --color-popover-foreground: var(--text);
+  --color-primary: var(--action);
+  --color-primary-foreground: var(--on-action);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--text);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--text-muted);
+  --color-accent: #b0f500;
+  --color-accent-foreground: #142b45;
+  --color-destructive: var(--danger);
+  --color-border: var(--line);
+  --color-input: var(--line-strong);
+  --color-ring: var(--focus);
+
+  --radius-pill: 999px;
+  --radius-panel: 26px;
+  --radius-card: 18px;
+  --radius-field: 14px;
+  --radius-sm: 10px;
+  --radius-xs: 2px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+
+  --shadow-cta: var(--shadow-cta);
+  --shadow-card: var(--shadow-card);
+  --shadow-glow-lime: 0 0 0 6px rgba(255, 255, 255, 0.08), 0 0 40px rgba(176, 245, 0, 0.22);
+
+  --ease-lumora: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: light;
+  --surface: #edf1f6;
+  --surface-2: #e4eaf1;
+  --surface-raised: #ffffff;
+  --text: #142b45;
+  --text-muted: #4d5b6b;
+  --text-subtle: #626e7b;
+  --accent-text: #527800;
+  --line: rgba(20, 43, 69, 0.12);
+  --line-strong: rgba(20, 43, 69, 0.24);
+  --action: #142b45;
+  --on-action: #ffffff;
+  --focus: #142b45;
+  --warn: #8a5a00;
+  --danger: #b4321f;
+  --shadow-cta: 0 14px 30px -16px rgba(20, 43, 69, 0.7);
+  --shadow-card: 0 12px 30px -12px rgba(20, 43, 69, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --surface: #0c1624;
+    --surface-2: #111e30;
+    --surface-raised: #111e30;
+    --text: #eef3f8;
+    --text-muted: #a9b8c9;
+    --text-subtle: #7d8da0;
+    --accent-text: #c6ff3a;
+    --line: rgba(214, 228, 243, 0.1);
+    --line-strong: rgba(214, 228, 243, 0.2);
+    --action: #ffffff;
+    --on-action: #070e18;
+    --focus: #c6ff3a;
+    --warn: #f3c969;
+    --danger: #ff8f7d;
+    --shadow-cta: 0 14px 30px -16px rgba(0, 0, 0, 0.8);
+    --shadow-card: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-surface text-fg;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  h1,
+  h2,
+  h3 {
+    color: var(--text);
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+  .on-ink :focus-visible {
+    outline-color: #c6ff3a;
+  }
+  ::selection {
+    background: rgba(176, 245, 0, 0.35);
+  }
+}
+
+/* Margem lateral fluida do design system */
+@utility gutter {
+  padding-inline: clamp(20px, 4vw, 56px);
+}
+
+/* O módulo: quadrado com curva grande num canto e média no oposto. */
+.module {
+  border-radius: 5% 49% 4.5% 29% / 5% 49% 4.5% 29%;
+}
+
+/* Kicker: rótulo em maiúsculas com o módulo como marcador. */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.kicker::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  background: #8fc400;
+  border-radius: 5% 49% 4.5% 29% / 5% 49% 4.5% 29%;
+}
+.on-ink .kicker {
+  color: #a9b8c9;
+}
+.on-ink .kicker::before {
+  background: #b0f500;
+}
+
+/* Trilho de encaixe */
+@keyframes encaixe {
+  0% {
+    transform: translateY(-6px) scale(0.9);
+    opacity: 0.4;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+.module-done {
+  animation: encaixe 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Seta do botão de ação: gira -45° e avança 3px no hover */
+.go-arrow {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-action:hover .go-arrow {
+  transform: translateX(3px) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .module-done {
+    animation: none;
+  }
+  .go-arrow {
+    transition: none;
+  }
+  .btn-action:hover .go-arrow {
+    transform: none;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+select.field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237d8da0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.25rem;
+}
